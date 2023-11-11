@@ -46,8 +46,7 @@ extern "C"
 /* *****************************************************************************
  * Function Prototypes
  **************************************************************************** */
-void drv_log_init_on_reset(void);
-void drv_log_init_before_main_loop(void);
+void drv_log_init(void);
 
 #ifdef __cplusplus
 }

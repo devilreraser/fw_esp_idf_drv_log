@@ -20,9 +20,11 @@
 #include "esp_console.h"
 #include "argtable3/argtable3.h"
 
-#include "drv_log_if.h"
+#include "drv_log.h"
 
-#include "drv_console_if.h"
+#if CONFIG_DRV_CONSOLE_USE
+#include "drv_console.h"
+#endif
 
 /* *****************************************************************************
  * Configuration Definitions
@@ -66,7 +68,13 @@ static struct {
 
 static int cmd_log_func(int argc, char **argv)
 {
+    #if CONFIG_DRV_CONSOLE_USE
+    #if CONFIG_DRV_CONSOLE_CUSTOM
+    #if CONFIG_DRV_CONSOLE_CUSTOM_LOG_DISABLE_FIX
     drv_console_set_other_log_disabled();
+    #endif
+    #endif
+    #endif
 
     ESP_LOGI(__func__, "argc=%d", argc);
     for (int i = 0; i < argc; i++)

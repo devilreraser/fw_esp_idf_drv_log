@@ -1,3 +1,7 @@
 menu "Component drv_log Configuration"
 
+    config DRV_LOG_USE
+        bool "Use drv_log component"
+        default y
+        
 endmenu
